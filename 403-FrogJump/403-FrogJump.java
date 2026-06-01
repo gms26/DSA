@@ -1,4 +1,4 @@
-// Last updated: 6/1/2026, 5:50:32 PM
+// Last updated: 6/1/2026, 5:51:45 PM
 1class Solution {
 2    public boolean canCross(int[] stones) {
 3        int n=stones.length;
@@ -14,6 +14,6 @@
 13                if(i==n-1)return true;}
 14            }
 15        }
-16        return n==1;
+16        return dp[n-1][n-1];
 17    }
 18}
