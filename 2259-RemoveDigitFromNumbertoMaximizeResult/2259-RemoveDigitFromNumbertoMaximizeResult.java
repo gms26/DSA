@@ -1,18 +1,22 @@
-// Last updated: 6/2/2026, 12:30:26 PM
+// Last updated: 6/3/2026, 6:26:33 PM
 1class Solution {
-2    public String removeDigit(String number, char digit) {
-3         String maxResult = ""; 
-4
-5        for (int i = 0; i < number.length(); i++) {
-6            if (number.charAt(i) == digit) {
-7                String candidate = number.substring(0, i) + number.substring(i + 1);
-8
-9                if (candidate.compareTo(maxResult) > 0) {
-10                    maxResult = candidate; 
-11                }
-12            }
-13        }
-14
-15        return maxResult;
-16    }
-17}
+2    public int longestPalindrome(String s) {
+3        int[] fre=new int[128];
+4        for(char c:s.toCharArray()){
+5            fre[c]++;
+6        }
+7        int res=0;
+8        boolean check=false;
+9        for(int x:fre){
+10            if(x%2==0) res+=x;
+11            else {
+12                res+=x-1;
+13                check=true;
+14                }
+15        }
+16        if(check){
+17            res++;
+18        }
+19        return res;
+20    }
+21}
