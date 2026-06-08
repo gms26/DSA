@@ -1,32 +1,41 @@
-// Last updated: 6/7/2026, 6:00:07 PM
-1
-2class Solution {
-3    public boolean isPalindrome(ListNode head) {
-4        if(head==null || head.next==null){
-5            return true;
-6        }
-7        ListNode s=head;
-8        ListNode f=head;
-9        while(f!=null && f.next!=null){
-10            s=s.next;
-11            f=f.next.next;
-12        }
-13        ListNode prev=null;
-14        ListNode current=s;
-15        while(current!=null){
-16        ListNode temp=current.next;
-17        current.next=prev;
-18        prev=current;
-19        current=temp;
-20        }
-21        ListNode l=head;
-22        ListNode r=prev;
-23        while(r!=null){
-24            if(l.val!=r.val){
-25                return false;
-26            }
-27            l=l.next;
-28            r=r.next;
-29        }return true;
-30    }
-31}
+// Last updated: 6/8/2026, 10:01:50 PM
+1/**
+2 * Definition for singly-linked list.
+3 * public class ListNode {
+4 *     int val;
+5 *     ListNode next;
+6 *     ListNode() {}
+7 *     ListNode(int val) { this.val = val; }
+8 *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+9 * }
+10 */
+11class Solution {
+12    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+13        ListNode dummy = new ListNode(0);
+14        ListNode current = dummy;
+15
+16        
+17        while (list1 != null && list2 != null) {
+18            if (list1.val < list2.val) {
+19                current.next = list1;
+20                list1 = list1.next;
+21            } else {
+22                current.next = list2;
+23                list2 = list2.next;
+24            }
+25           
+26       
+27            current = current.next; 
+28        }
+29
+30      
+31        if (list1 != null) {
+32            current.next = list1;
+33        } else {
+34            current.next = list2;
+35        }
+36
+37       
+38        return dummy.next;
+39    }
+40}
