@@ -1,36 +1,15 @@
-// Last updated: 6/15/2026, 9:43:31 PM
-1import java.util.*;
-2
-3class Solution {
-4    public int[] maxSlidingWindow(int[] nums, int k) {
-5        int n = nums.length;
-6        int[] ans = new int[n - k + 1];
-7
-8        Deque<Integer> dq = new ArrayDeque<>();
-9        int idx = 0;
-10
-11        for (int i = 0; i < n; i++) {
-12
-13           
-14            while (!dq.isEmpty() && dq.peekFirst() < i - k + 1) {
-15                dq.pollFirst();
-16            }
-17
-18           
-19            while (!dq.isEmpty() && nums[dq.peekLast()] <= nums[i]) {
-20                dq.pollLast();
-21            }
-22
-23           
-24            dq.addLast(i);
-25
-26            
-27            if (i >= k - 1) {
-28                ans[idx++] = nums[dq.peekFirst()];
-29            }
-30        }
-31
-32        return ans;
-33    }
-34}
-35
+// Last updated: 6/28/2026, 11:56:19 PM
+1class Solution {
+2    public long minCost(String s, int[] cost) {
+3     long t=0;
+4     long[] ar=new long[26];
+5     for(int i=0;i<s.length();i++){
+6        t+=cost[i];
+7        ar[s.charAt(i)-'a']+=cost[i];
+8     }   
+9long m=0;
+10for(long i:ar){
+11    m=Math.max(m,i);
+12}return t-m;
+13    }
+14}
