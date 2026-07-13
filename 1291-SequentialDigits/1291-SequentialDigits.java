@@ -1,18 +1,18 @@
-// Last updated: 7/13/2026, 9:58:53 AM
+// Last updated: 7/13/2026, 12:22:27 PM
 1class Solution {
-2    public List<Integer> sequentialDigits(int low, int high) {
-3        List<Integer>l=new ArrayList<>();
-4        int ls=String.valueOf(low).length();
-5        int hs=String.valueOf(high).length();
-6        String s="123456789";
-7        for(int i=ls;i<=hs;i++){
-8            for(int j=0;i+j<=9;j++){
-9                int a=Integer.parseInt(s.substring(j,i+j));
-10                if(a>=low && a<=high){
-11                    l.add(a);
-12                }
-13            }
+2    public int[] arrayRankTransform(int[] arr) {
+3        int a[]=arr.clone();
+4        Arrays.sort(a);
+5        HashMap<Integer,Integer>h=new HashMap<>();
+6        int j=1;
+7        for(int i=0;i<a.length;i++){
+8            if(!h.containsKey(a[i]))
+9            h.put(a[i],j++);
+10        }
+11        System.out.print(h);
+12        for(int i=0;i<a.length;i++){
+13            a[i]=h.get(arr[i]);
 14        }
-15        return l;
+15        return a;
 16    }
 17}
